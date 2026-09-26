@@ -11,7 +11,7 @@
     {
       "symptom": "Endless loading screen after the logos on the default engine (reported on an M1 and an M2, reproduced on an M1 Pro, engine r7).",
       "cause": "the Wine 10 tree. The game's startup stops before its Epic login and nothing loads. Not the videos, not the renderer. The same install loads on the Wine 11 tree.",
-      "fix": "move the environment to the Wine 11 engine (Settings, Environments, the environment's page, Advanced, engine Wine 11.0 (CrossOver 26.3) r12) and use the DXMT mode. The recipe names both, so a Highball with it offers the engine on Play."
+      "fix": "move the environment to the Wine 11 engine (Settings, Environments, the environment's page, Advanced, engine Wine 11.0 (CrossOver 26.3) r12) and set the environment's mode to DXMT, also because Steam's window draws black in DXVK mode on that engine. The recipe names both, so a Highball with it offers the engine on Play."
     },
     {
       "symptom": "Character preview drawn black in the character creator on DXVK (Wine 11, M1 Pro).",
@@ -27,6 +27,11 @@
       "symptom": "In-game tutorial videos show a blank white screen instead of playing (reported on the Wine 11 engine r11, DXMT, M1, highball#202).",
       "cause": "not measured. The game plays them through Windows Media Foundation, which Wine serves with its own media layer, and these are 4K H.264 files. The startup logos, the same kind of file, do play.",
       "fix": "none known. The game itself plays on, the tutorials are the only videos affected so far."
+    },
+    {
+      "symptom": "Steam's own window shows only its frame, the page area black, after moving the environment to the Wine 11 engine (reported on an M1, r11, reproduced on an M1 Pro, r12).",
+      "cause": "measured: on the Wine 11 engines Steam's browser draws black in the DXVK mode and fine in the DXMT mode. Being looked at.",
+      "fix": "set the environment's mode to DXMT on the Wine 11 engine, which is the mode this game wants anyway."
     }
   ],
   "launchArgs": null,
