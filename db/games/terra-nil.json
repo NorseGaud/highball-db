@@ -15,5 +15,9 @@
     }
   ],
   "launchArgs": null,
-  "lastVerified": null
+  "lastVerified": null,
+  "nativeMac": {
+    "available": true,
+    "where": "Steam"
+  }
 }
