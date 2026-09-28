@@ -12,8 +12,17 @@
       "symptom": "Keyboard input drops once in a while (reported, Windows build through Highball)",
       "cause": null,
       "fix": "Not investigated. The native macOS version avoids Wine altogether."
+    },
+    {
+      "symptom": "Some cutscenes (the Nailsmith's, the Black Egg's) stay on a black screen (reported on an M4, DXMT, engine r5, highball#214).",
+      "cause": "not measured. Hollow Knight plays its cutscenes as video files, which go through Wine's own media layer.",
+      "fix": "the native Mac build plays them. Not investigated for the Windows build."
     }
   ],
   "launchArgs": null,
-  "lastVerified": null
+  "lastVerified": null,
+  "nativeMac": {
+    "available": true,
+    "where": "Steam, GOG"
+  }
 }
