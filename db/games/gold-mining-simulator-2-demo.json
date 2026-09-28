@@ -10,8 +10,8 @@
   "knownIssues": [
     {
       "symptom": "Crashes at start on DXMT and DXVK with an Unreal fatal error (CreateTexture2D failed with E_FAIL on a shared render target, MiscFlags 0x2), reported on an M2 Pro, engine r7.",
-      "cause": "the same shared-texture failure ContractVille hits on the default engine: the Direct3D 11 path creates a shared render target that engine's Direct3D 11 layers refuse.",
-      "fix": "launch with -dx12 on D3DMetal, which Highball does from this entry."
+      "cause": "the shared-texture failure ContractVille also hits on the default engine up to r11: DXMT's D3DKMT adapter lookup fails on that Wine, so a shared render target could not be created and Unreal treats that as fatal.",
+      "fix": "launch with -dx12 on D3DMetal, which Highball does from this entry. From engine r13 (Highball 0.10 beta) the Direct3D 11 path no longer crashes on this either, not yet tried with this game."
     },
     {
       "symptom": "\"DirectX 12 is not supported on your system\" (reported).",

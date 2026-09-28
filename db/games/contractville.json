@@ -20,8 +20,8 @@
     },
     {
       "symptom": "Crashes at start on DXMT with the Unreal crash reporter on the Wine 10 engine (M1 Pro, engine r7, DXMT 0.80).",
-      "cause": "measured: a shared D3D11 render target (MISC_SHARED, R16G16B16A16_FLOAT) gets E_FAIL from that DXMT build, which Unreal treats as fatal.",
-      "fix": "the Wine 11 engine, whose DXMT accepts it."
+      "cause": "measured: the game creates a shared D3D11 render target (MISC_SHARED, R16G16B16A16_FLOAT). DXMT needs Wine's D3DKMT device to register a shared allocation, and on the Wine 10 tree DXMT's adapter lookup by LUID fails, so there was no device and creation returned E_FAIL, which Unreal treats as fatal.",
+      "fix": "fixed on the default engine from revision r13 (Highball 0.10 beta): its DXMT creates that texture as a private one instead of failing. Earlier revisions crash; the Wine 11 engine always accepted it."
     },
     {
       "symptom": "In-game tutorial videos show a blank white screen instead of playing (reported on the Wine 11 engine r11, DXMT, M1, highball#202).",
@@ -39,7 +39,7 @@
   "rendererResults": {
     "dxmt": {
       "verdict": "works",
-      "detail": "on the Wine 11 engines r11 and r12: character creator with the 3D scene (M1 Pro, 2026-09-26). On the Wine 10 engine r7: crash at start, shared texture E_FAIL"
+      "detail": "on the Wine 11 engines r11 and r12: character creator with the 3D scene (M1 Pro, 2026-09-26). On the Wine 10 engine: crash at start up to r11, starts from r13 and then meets that tree's loading-screen stall"
     },
     "dxvk": {
       "verdict": "partial",
