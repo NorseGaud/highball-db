@@ -6,12 +6,12 @@
   "renderer": "dxmt",
   "anticheat": null,
   "provenance": "Reported by halonsoluis (highball-db#29, 2026-09-13), Apple M2 Pro, macOS 26.5, Highball 0.9.9, engine x64-sikarugir10.0_6-r2, DXMT, rated 5 of 5 after 3 minutes. Not verified by the maintainer.",
-  "notes": "Reported perfect on DXMT on the default engine, a short session. Online play is the whole game and the reporter did not say whether a lobby was joined. Measured on an M4 with macOS 27.0 on 2026-09-30, DXMT, the first menus only (age check and sign-in screen), not played. The current 64-bit build often closes by itself right after starting on the Wine 10 engines, see known issues.",
+  "notes": "Reported perfect on DXMT on the default engine, a short session. Online play is the whole game and the reporter did not say whether a lobby was joined. Measured on an M4 with macOS 27.0 on 2026-09-30, DXMT, the first menus only (age check and sign-in screen), not played. On engine r13 the current 64-bit build often closed by itself right after starting on DXMT, which engine r15 fixes, see known issues.",
   "knownIssues": [
     {
-      "symptom": "Closes by itself within two seconds of starting, often. On an M4 with macOS 27.0 that happened in 8 of 12 launches on the Wine 10 engines (r13 and r15) and in none of 5 on the Wine 11 engine",
-      "cause": "Not found yet. The game raises an exception on its main thread right after its audio starts, and Wine 10 cannot unwind it (\"invalid frame\" in the log). The reports from before the game's 64-bit build do not mention it",
-      "fix": "Press Play again, it starts on a later try. Or set the environment's engine to the newest x64-crossover26.3 one (Settings, Environments, your environment, Advanced, Engine), where it started every time"
+      "symptom": "Closes by itself within two seconds of starting on DXMT, often. On an M4 with macOS 27.0 that happened in 8 of 12 launches on engine r13",
+      "cause": "A bug in DXMT (also upstream, 3Shain/dxmt#219): it created its first Metal pipelines before its Metal device was set, so the game died on a garbage object. Measured on an M4 with macOS 27.0: 0 of 12 launches failed with the fixed DXMT, 0 of 6 with engine r5's older DXMT, and 0 of 8 on DXVK",
+      "fix": "Fixed in engine r15, which environments on the default engine pick up by themselves once Steam is closed. Until then, press Play again, or set this game's graphics mode to DXVK"
     },
     {
       "symptom": "After switching to another app and back, the game keeps drawing but ignores clicks and keys until it is restarted",

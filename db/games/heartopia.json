@@ -19,8 +19,8 @@
       "fix": "Fixed in engine r15, which environments on the default engine pick up by themselves once Steam is closed"
     },
     {
-      "symptom": "On DXMT the dialog shown while the game loads has no text, only a white and a teal button",
-      "cause": "Not investigated. The game's log reports \"Got null handle from IDXGIResource::GetSharedHandle\" 30 times at start. Seen on an M4 with macOS 27.0",
+      "symptom": "The dialog shown while the game loads has no text, only a white and a teal button",
+      "cause": "Not the graphics mode: it looks the same on DXMT and DXVK (an M4 with macOS 27.0). Not found yet. The game embeds a Chromium web view (Vuplex 3D WebView), whose helper process was not running, and logs \"Got null handle from IDXGIResource::GetSharedHandle\" 30 times at start, so the dialog's page may never reach the screen. Not confirmed",
       "fix": "The teal button on the right continues into the game"
     }
   ],
