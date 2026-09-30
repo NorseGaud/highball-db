@@ -37,9 +37,7 @@
   },
   "installedMarkers": [
     {
-      "registry": "Software\\\\Microsoft\\\\NET Framework Setup\\\\NDP\\\\v4\\\\Full",
-      "value": "Release",
-      "min": 528040
+      "file": "windows/Microsoft.NET/Framework/v4.0.30319/clr.dll"
     }
   ]
 }
