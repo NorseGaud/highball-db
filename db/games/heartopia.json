@@ -11,7 +11,7 @@
     {
       "symptom": "After switching to another app and back, the game window has focus but ignores the mouse and keyboard until the game is restarted",
       "cause": "Wine 10's Mac driver sent the game a made-up click in its title bar whenever macOS gave it focus back, and Unity ignores the focus gain that follows such a click, so it keeps drawing but drops every click and key (Wine bug 48121, highball#182). Measured on an M4 with macOS 27.0 on engine r15: the announcement tabs keep working after a Cmd+Tab round trip and after 15 seconds away",
-      "fix": "Fixed in engine r15, which environments on the default engine pick up by themselves once Steam is closed. On an older engine, restart the game."
+      "fix": "Fixed in engine r15, which environments on the default engine pick up by themselves once Steam is closed. The reporter confirmed it on an M4 Pro on r15 and on the Wine 11 engine (highball#182, 2026-09-30). On an older engine, restart the game."
     },
     {
       "symptom": "Takes no clicks at all from the start when launched with Steam's Play button",
