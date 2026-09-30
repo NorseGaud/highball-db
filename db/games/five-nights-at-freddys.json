@@ -16,8 +16,8 @@
   "knownIssues": [
     {
       "symptom": "The office runs at about 18 to 27 fps on macOS 27, where it ran at 60 on macOS 26",
-      "cause": "Not the graphics mode, the engine, the sync mode or the display setting: all measured the same on an M4 with macOS 27.0 on 2026-09-30. The game's own 32-bit code runs slowly, with one to two CPU cores busy. Likely Rosetta on macOS 27, not confirmed",
-      "fix": "None yet. It stays playable. An x87 accelerator for Rosetta (highball#165) is the lead to test"
+      "cause": "Not the graphics mode, the engine, the sync mode or the display setting: all measured the same on an M4 with macOS 27.0 on 2026-09-30. The frame waits about 50 ms on something the game does, with one to two CPU cores busy. Rosetta's slow x87 maths is not what holds it: with the x87 accelerator (athei's x87sidecar 1.7.0 on the Wine 11 engine, highball#165) the CPU use halved but the office stayed at 19 to 21 fps against 22 without it",
+      "fix": "None yet. It stays playable"
     },
     {
       "symptom": "Without the recipe, on a display whose logical resolution is not 16:10: the picture sits down and to the right with black bars along the top and left, and is clipped at the right and bottom edges.",
