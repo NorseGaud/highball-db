@@ -19,8 +19,9 @@ STATUS = {
     "reported-upstream": ("Reported upstream", "info", "Named in DXMT release notes as working or fixed; not yet verified by Highball."),
     "community":         ("Community", "warn", "Community consensus (AppleGamingWiki, r/macgaming); unverified by Highball."),
     "blocked-anticheat": ("Blocked", "bad", "Kernel anti-cheat; structurally impossible under Wine. Don't waste the download."),
+    "blocked-publisher": ("Blocked by publisher", "bad", "The publisher stops the game on macOS on purpose. Don't waste the download."),
 }
-order = {"verified-local": 0, "reported-upstream": 1, "community": 2, "blocked-anticheat": 3}
+order = {"verified-local": 0, "reported-upstream": 1, "community": 2, "blocked-anticheat": 3, "blocked-publisher": 4}
 games.sort(key=lambda g: (order.get(g["status"], 9), g["title"].lower()))
 counts = {s: sum(1 for g in games if g["status"] == s) for s in STATUS}
 

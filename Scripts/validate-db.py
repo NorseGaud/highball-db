@@ -2,7 +2,7 @@
 """Validate every db/games entry and recipes/*.json against the schema rules CI enforces."""
 import re, json, sys, glob
 
-STATUSES = {"verified-local", "reported-upstream", "community", "blocked-anticheat"}
+STATUSES = {"verified-local", "reported-upstream", "community", "blocked-anticheat", "blocked-publisher"}
 RENDERERS = {"wined3d", "dxmt", "d3dmetal", "dxvk", "vkd3d", None}
 errors = []
 
@@ -29,7 +29,7 @@ for f in glob.glob("db/games/*.json"):
         errors.append(f"{f}: nativeVulkan must be true or false")
     if "epic_app_name" in d and not isinstance(d["epic_app_name"], str):
         errors.append(f"{f}: epic_app_name must be a string")
-    if d.get("status") == "blocked-anticheat" and d.get("renderer") is not None:
+    if str(d.get("status")).startswith("blocked-") and d.get("renderer") is not None:
         errors.append(f"{f}: blocked entries must not recommend a renderer")
     # The app decodes both of these with fixed types, and a wrong shape makes the whole row fail
     # to decode, which drops it from the app in silence. Caught on 2026-09-23 only by the app's
