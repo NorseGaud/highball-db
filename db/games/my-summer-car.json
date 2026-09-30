@@ -11,7 +11,7 @@
     {
       "symptom": "After a long session the game freezes, and the log fills with \"msync: warn: node memory pool exhausted\" (242 million lines in one report)",
       "cause": "A bug in msync, the fast synchronization mode: a wait on several objects that lost a race left the thread registered in Wine's background process and nothing removed it, so the pool ran out and that process kept growing (highball#224). Measured on an M4 with macOS 27.0 with a reproducer, 2026-10-01: the wineserver grew from 30 MB to 77 MB in 30 s on engine r12 and stayed at 39 MB on r13. The Wine 10 default engine has the same fault (33 MB to 87 MB on r15); the freeze itself was reported on r12",
-      "fix": "Fixed in engine r13 for the Wine 11 engine, which environments on it pick up by themselves once Steam is closed. On the default engine, or until then, set the environment's Synchronization to None and stop the environment before playing, so the change applies"
+      "fix": "Fixed in engine r13 for the Wine 11 engine. Environments never change engine on their own: pick x64-crossover26.3-r13 on the environment's full page, under Advanced. On the default engine, or until then, set the environment's Synchronization to None and stop the environment before playing, so the change applies"
     }
   ],
   "launchArgs": null,
