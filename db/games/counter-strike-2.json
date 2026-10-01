@@ -31,5 +31,17 @@
     "macos": "26.6.2",
     "engine": "x64-sikarugir10.0_6-r2",
     "fps": "about 105"
-  }
+  },
+  "knownIssues": [
+    {
+      "symptom": "Music and game sounds stutter or crackle, like a speaker next to a ringing phone, on the speakers, AirPods and a monitor alike (highball#127)",
+      "cause": "The game keeps very little sound queued, and at 48 kHz the Mac asks Wine for 10.7 ms of sound at a time, more than it often has, so it plays a short silence instead. Measured on an M4 with macOS 27.0 on 2026-10-01, engine r17 with DXMT, two minutes of the main menu. At 48 kHz there were 324 dropouts of about 8 ms each. At 96 kHz there were none",
+      "fix": "Open Audio MIDI Setup (Applications, Utilities), select your speakers or wired headphones, set Format to 96,000 Hz or 88,200 Hz, and restart the game. Bluetooth headphones and many monitors do not offer those rates, so on them the stutter stays for now"
+    },
+    {
+      "symptom": "Turning on fullscreen with the game on a second display crashes it (reported on a MacBook Pro with an LG monitor, highball#156)",
+      "cause": "Not measured here. Fullscreen asks macOS to switch that display's mode, and the crash happens at that step. On a Mac mini whose only screen is the same monitor the game runs without crashing (reported)",
+      "fix": "Use the game's Fullscreen Windowed mode, under Display Mode in its video settings, which fills the screen without a mode switch"
+    }
+  ]
 }
