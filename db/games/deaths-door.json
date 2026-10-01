@@ -7,7 +7,13 @@
   "anticheat": null,
   "provenance": "Reported by SnoopyHuman (highball-db#97, 2026-09-17), Apple M5, macOS 27, Highball 0.9.19, engine x64-sikarugir10.0_6-r3, DXVK, Epic copy, rated 5 of 5 after 3 minutes. Not verified by the maintainer.",
   "notes": "Reported perfect on DXVK after a three-minute session on an M5, Epic copy, so this covers launch and the opening. The Steam id here is the same game on Steam. No measurement here yet.",
-  "knownIssues": [],
+  "knownIssues": [
+    {
+      "symptom": "The player and enemies are invisible while the level draws (reported on an M1 Max with DXVK, highball#219)",
+      "cause": "Not measured here. The other report, on an M5 with the same DXVK mode, had no such problem, so the older chip is the likely difference",
+      "fix": "Untested. Set Mode for this game to DXMT on the game's page, under Advanced"
+    }
+  ],
   "launchArgs": null,
   "lastVerified": null
 }
