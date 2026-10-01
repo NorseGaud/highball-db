@@ -1,0 +1,19 @@
+{
+  "id": "resident-evil-4-remake",
+  "title": "Resident Evil 4",
+  "steam_appid": 2050650,
+  "status": "community",
+  "renderer": "d3dmetal",
+  "anticheat": null,
+  "provenance": "Reported by zn2m4swhkv-sys (highball-db#269, 2026-10-01), MacBook Air M2 with 24 GB, macOS 27.0.1, Highball 0.10.0, D3DMetal, rated 4 of 5 with no length limit on play. The engine was a GPTK 4 revision (x64-sikarugir10.0_6-r14 or r16) or x64-crossover26.3-r12, the reporter is not sure which. Not verified by the maintainer.",
+  "notes": "The 2023 remake. RE Engine and Direct3D 12, so D3DMetal. On an M2 MacBook Air at 1280x832 with the in-game cap at 60, mostly mid settings, ray tracing and FSR off, it runs at 30 to 40 fps as the Mac heats up. Looking through a sniper scope drops about 10 fps for a while. An 8BitDo SN30 Pro in X-input mode works, rumble included. The reporter also set Wine's debug output off (WINEDEBUG=-all), D3DM_MTL4=1, D3DM_ENABLE_METALFX=1 and a list of DLL overrides, and says stutters on loud sounds such as shotgun fire and explosions went away after that. None of it was tested here, so it is not part of the setup Highball applies.",
+  "knownIssues": [
+    {
+      "symptom": "The HDR brightness setup screen is blank (reported)",
+      "cause": "Not investigated here",
+      "fix": "Leave HDR off in the game's display settings"
+    }
+  ],
+  "launchArgs": null,
+  "lastVerified": null
+}
