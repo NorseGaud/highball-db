@@ -1,0 +1,24 @@
+{
+  "id": "where-winds-meet",
+  "title": "Where Winds Meet",
+  "steam_appid": 3564740,
+  "status": "community",
+  "renderer": "dxmt",
+  "anticheat": null,
+  "provenance": "Reported by Manas-Taneja (highball-db#277, 2026-10-02, first filed as highball-db#276), Apple M5 Pro, macOS 27.0.1, Highball 0.9.39, engine x64-crossover26.3-r12 (the Wine 11 engine), DXMT, frame cap 60, rated 4 of 5 after 188 minutes over several sessions, recipes steam, vcrun2022. Not verified by the maintainer.",
+  "notes": "Free to play. Reported playable on DXMT on the Wine 11 engine with Highball's frame cap at 60 on an M5 Pro, over sessions of 16 minutes and just over three hours without a crash, and one crash about two and a half minutes into a session with the in-game Store window open. Stutter in areas dense with NPCs. Whether the default engine runs it as well is not known, and the anti-cheat map has no entry for this game. No frame rate was given and nothing was measured here.",
+  "knownIssues": [
+    {
+      "symptom": "Crashed once about two and a half minutes into a session with the in-game Store window open (reported on an M5 Pro, Wine 11 engine r12, DXMT)",
+      "cause": "Not investigated here. Two other sessions of 16 minutes and over three hours had no crash",
+      "fix": "None known. Start the game again, and keep the in-game Store closed if it repeats"
+    },
+    {
+      "symptom": "Stutter in areas with many NPCs (reported on an M5 Pro)",
+      "cause": "Not investigated here",
+      "fix": "None known. The reporter plays with Highball's frame cap at 60"
+    }
+  ],
+  "launchArgs": null,
+  "lastVerified": null
+}
