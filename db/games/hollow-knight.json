@@ -14,9 +14,9 @@
       "fix": "Not investigated. The native macOS version avoids Wine altogether."
     },
     {
-      "symptom": "Some cutscenes (the Nailsmith's, the Black Egg's) stay on a black screen (reported on an M4, DXMT, engine r5, highball#214).",
-      "cause": "not measured. Hollow Knight plays its cutscenes as video files, which go through Wine's own media layer.",
-      "fix": "the native Mac build plays them. Not investigated for the Windows build."
+      "symptom": "Some cutscenes (the Nailsmith's, the Black Egg's) stay on a black screen with the ambience playing (reported on an M4, DXMT, default engine r5 and r6, then Wine 11 engine r5, highball#214).",
+      "cause": "not measured on this game. Hollow Knight plays its cutscenes as video files through Wine's media layer into the graphics layer, and the reporter's log shows those frames failing on the way in (DeviceTexture: Invalid device handle). Both engines tested predate the fixes for that path: the default line got it in r13, the Wine 11 line in r11.",
+      "fix": "Untested on this game. Highball 0.10.3 with the Wine 11 engine r15 (or the default engine r13 or later) carries the fixes, measured on another Unity game's menu video. The native Mac build on Steam plays them without Wine."
     }
   ],
   "launchArgs": null,

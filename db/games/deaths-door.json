@@ -9,9 +9,9 @@
   "notes": "Reported perfect on DXVK after a three-minute session on an M5, Epic copy, so this covers launch and the opening. The Steam id here is the same game on Steam. No measurement here yet.",
   "knownIssues": [
     {
-      "symptom": "The player and enemies are invisible while the level draws (reported on an M1 Max with DXVK, highball#219)",
-      "cause": "Not measured here. The other report, on an M5 with the same DXVK mode, had no such problem, so the older chip is the likely difference",
-      "fix": "Untested. Set Mode for this game to DXMT on the game's page, under Advanced"
+      "symptom": "The player and enemies are invisible while the level draws (reported on an M1 Max and again on an M2 Max, both with DXVK, highball#219)",
+      "cause": "DXVK's Vulkan on MoltenVK has no transform feedback on any Apple GPU, so the 35 stream-output geometry shaders Unity creates to animate characters fail to build (the log says Transform feedback not supported by device, then Metal rejects the pipelines) while the scenery's shaders build fine. Not chip generation, the M2 Max reproduces it",
+      "fix": "Untested. Set Mode for this game to DXMT on the game's page under Advanced, on Highball 0.10.2 or later (before 0.10.2 the per-game mode did not reach a Steam launch), then Stop All Windows Processes and Play"
     }
   ],
   "launchArgs": null,
