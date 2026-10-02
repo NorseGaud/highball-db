@@ -15,6 +15,10 @@
     },
     {
       "type": "note",
+      "text": "Install the Rockstar Games Launcher through Highball first (Add games, Rockstar) rather than letting Steam's first run install it: on engines r11 to r14 Steam's installer stops at once with 'make sure all instances of the Rockstar Games Launcher have been closed' (fixed in r15), and on r7 the launcher installed through Highball initialised Steam and started the game on an M4 (2026-10-02)."
+    },
+    {
+      "type": "note",
       "text": "Leave the game on its own Vulkan renderer (the default). The graphics mode setting applies to the Rockstar launcher, which needs DXMT, not to the game."
     },
     {
@@ -51,13 +55,18 @@
       "symptom": "One vertex shader fails to compile to Metal (gl_CullDistance emitted into an undeclared struct member) and the driver logs many bytes_per_row assertions during loading.",
       "cause": "SPIRV-Cross's Metal output for cull distance, and the row pitch of the game's linear 2D textures.",
       "fix": "none needed so far: nothing visibly missing in the prologue. Recorded so a texture glitch later has a lead."
+    },
+    {
+      "symptom": "On engines r11 to r14 the Rockstar Games Launcher installer stops right after it starts with 'make sure all instances of the Rockstar Games Launcher have been closed' and the launcher is never installed.",
+      "cause": "a Highball engine patch from r11 returned a heap pointer from GetLastError() after the first display call of a process; the installer reads it right after it measures the display.",
+      "fix": "engine x64-crossover26.3-r15 (Highball 0.10.3). r7, the revision this recipe names, does not have the fault."
     }
   ],
   "lastVerified": {
-    "date": "2026-09-11",
-    "engine": "x64-crossover26.3-r6",
-    "macos": "26.6.2",
-    "chip": "Apple M1 Pro",
-    "result": "Vulkan (game default) with DXMT for the launcher: main menu, intro, opening cutscene and the prologue blizzard ride under keyboard control at about 34 fps, 1280x720 windowed. Zero faults in two runs."
+    "date": "2026-10-02",
+    "engine": "x64-crossover26.3-r7",
+    "macos": "27.0",
+    "chip": "Apple M4",
+    "result": "Fresh environment, launcher installed through the Rockstar recipe, then Highball's Play: Steam cold-started into the game, the launcher mirrored the Steam entitlement and started RDR2.exe, which reached its brightness calibration screen. The 2026-09-11 run on an M1 Pro (r6, macOS 26.6.2) played the prologue."
   }
 }
