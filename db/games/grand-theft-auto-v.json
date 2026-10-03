@@ -31,8 +31,8 @@
     {
       "symptom": "The Rockstar launcher shows a blank or black sign-in window and the game never starts.",
       "cause": "the sign-in is a Chromium surface drawn by a separate GPU process into the browser process's window. Wine returned nothing for it until engine patch 0007.",
-      "fix": "use engine x64-crossover26.3-r5 or later with the DXMT renderer, and apply the rockstar recipe, which sets DXMT_ALLOW_CROSS_PROCESS_SWAPCHAIN=1.",
-      "fixedIn": "x64-crossover26.3-r5"
+      "fix": "use engine x64-crossover26.3-r5 or later with the DXMT renderer (the recipe asks for r15, where the launcher installer works too), and apply the rockstar recipe, which sets DXMT_ALLOW_CROSS_PROCESS_SWAPCHAIN=1.",
+      "fixedIn": "x64-crossover26.3-r15"
     },
     {
       "symptom": "Sign in fails with 'Sorry, we are unable to handle your request at this time' (error 1.000.7).",
