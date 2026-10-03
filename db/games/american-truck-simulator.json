@@ -6,7 +6,7 @@
   "renderer": "dxmt",
   "anticheat": null,
   "provenance": "Reported by glkmag (highball-db#233, 2026-09-27), Apple M4, macOS 27.0, Highball 0.9.35, engine x64-crossover26.3-r4 (an early Wine 11 engine), DXMT, rated 4 of 5 after 7 minutes, said to run almost as well as on CrossOver. Not verified by the maintainer.",
-  "notes": "Reported playable on DXMT on the Wine 11 engine r4. Two issues reported: Quit Game freezes the screen and the game has to be closed from Highball, and a custom ESP32 Bluetooth controller is not recognised. Nothing was measured here. The game has a native Mac version on Steam as well.",
+  "notes": "Reported playable on DXMT on the Wine 11 engine r4. Two issues reported: Quit Game freezes the screen and the game has to be closed from Highball, and a custom ESP32 Bluetooth controller is not recognised. Nothing was measured here. The game has a native Mac version on Steam as well. A second reporter (highball-db#288, 2026-10-03, Apple M1, macOS 27.0.1, Highball 0.10.3) has it and Euro Truck Simulator 2 fail to start on the Wine 11 engine r15 in DXMT mode while the default engine starts both on the same Mac, see the known issue.",
   "knownIssues": [
     {
       "symptom": "Quit Game freezes the screen instead of exiting (reported on an M4, DXMT, engine x64-crossover26.3-r4).",
@@ -17,6 +17,11 @@
       "symptom": "A custom ESP32 Bluetooth game controller is not recognised (reported on an M4).",
       "cause": "not measured. A controller Wine's raw HID path does not map is the case the SDL driver handles.",
       "fix": "worth trying the dependency \"Controllers through SDL\" (recipe controller-sdl), then restart the environment. Not verified for this controller."
+    },
+    {
+      "symptom": "On the Wine 11 engine r15 in DXMT mode the game does not start, Euro Truck Simulator 2 the same, while the default engine starts both on the same Mac (reported on an M1, macOS 27.0.1, Highball 0.10.3, highball-db#288).",
+      "cause": "Not measured, no log was attached. The candidate is the DXMT build the Wine 11 engine carried from r11 to r15, which built its clear pipelines before the Metal device they read was set up and crashed at start-up some of the time. The default engine lost it in 0.10.1 and the Wine 11 engine loses it in r16 (0.10.4 beta).",
+      "fix": "Stay on the default engine, which starts the game for this reporter, or once on 0.10.4 pick the Wine 11 engine r16 by hand on the game's Full page under Advanced, Engine. Not verified on this game."
     }
   ],
   "launchArgs": null,
