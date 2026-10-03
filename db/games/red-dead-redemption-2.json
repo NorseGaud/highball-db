@@ -41,7 +41,7 @@
     },
     {
       "symptom": "The Rockstar launcher reports error 113, 'Steam failed to initialize. Please verify that the Steam Client is running', when Steam starts the game (highball-db#272, a Discord report on an M2, both on engine r7, Highball 0.10.2, macOS 27).",
-      "cause": "not reproduced: on an M4 with the same engine and command the launcher initialised Steam, mirrored the entitlement and started the game. The one difference known so far is how the launcher got installed, by Highball's Rockstar recipe here.",
+      "cause": "not reproduced. On an M4 with the same engine r7 the launcher initialised Steam, mirrored the entitlement and started the game in five launch paths tried on 2026-10-03: Steam cold-started by Play, Steam already open and the game forwarded to it, with the environment on msync and with sync off, and the launcher installed through Highball; started on its own without Steam it only shows its sign-in window. A Discord reporter on an M2 still gets 113 on r7 after reinstalling the launcher through Highball, so the difference is in something those runs do not cover, most likely the Steam client or account state on that Mac; their launcher.log will say what the launcher looked for.",
       "fix": "none confirmed. Stop all Windows processes, install the Rockstar Games Launcher through Highball (Add games, Rockstar) rather than through Steam's first run, then press Play in Highball."
     }
   ],
