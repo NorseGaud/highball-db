@@ -3,8 +3,12 @@
   "kind": "launcher",
   "title": "Rockstar Games Launcher",
   "renderer": "dxmt",
-  "engine": "x64-crossover26.3-r9",
+  "engine": "x64-crossover26.3-r15",
   "steps": [
+    {
+      "type": "note",
+      "text": "Asks for the Wine 11 engine r15 or newer since 2026-10-03 (was r9). On r11 to r14 the Rockstar Games Launcher installer stops at once, and an environment already on an older revision is not moved on its own, so raising the pin makes Play offer the newest revision to those environments. Everything installed stays."
+    },
     {
       "type": "sync",
       "sync": "none"
@@ -80,7 +84,7 @@
   ],
   "lastVerified": {
     "date": "2026-09-18",
-    "engine": "x64-crossover26.3-r9",
+    "engine": "x64-crossover26.3-r15",
     "macos": "26.6.2",
     "chip": "Apple M1 Pro",
     "result": "Fresh environment through the recipe on the Wine 11 engine: installer, service and launcher run, and the 'Rockstar Games - Sign In' window renders and is interactive under the pin's DXVK once the environment's services carry the launch stack (first launch after install stayed empty until then, see the known issue). Earlier: signed in end to end on 2026-09-08 and started Grand Theft Auto V Enhanced. Bundled Wine 10 engine: the browser dies on a missing user32 export, no sign-in."

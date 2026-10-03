@@ -7,8 +7,12 @@
     "rockstar"
   ],
   "renderer": "dxmt",
-  "engine": "x64-crossover26.3-r7",
+  "engine": "x64-crossover26.3-r15",
   "steps": [
+    {
+      "type": "note",
+      "text": "Asks for the Wine 11 engine r15 or newer since 2026-10-03 (was r7). On r11 to r14 the Rockstar Games Launcher installer stops at once, and an environment already on an older revision is not moved on its own, so raising the pin makes Play offer the newest revision to those environments. Everything installed stays."
+    },
     {
       "type": "note",
       "text": "Needs engine x64-crossover26.3-r6 or later (the recipe asks for r7, which carries the same MoltenVK plus the NVAPI stub other games need): its MoltenVK accepts the linear-tiled 3D, mipmapped and array images the game creates. On every earlier engine the game exits at 98 per cent of its first load."
@@ -64,7 +68,7 @@
   ],
   "lastVerified": {
     "date": "2026-10-02",
-    "engine": "x64-crossover26.3-r7",
+    "engine": "x64-crossover26.3-r15",
     "macos": "27.0",
     "chip": "Apple M4",
     "result": "Fresh environment, launcher installed through the Rockstar recipe, then Highball's Play: Steam cold-started into the game, the launcher mirrored the Steam entitlement and started RDR2.exe, which reached its brightness calibration screen. The 2026-09-11 run on an M1 Pro (r6, macOS 26.6.2) played the prologue."
