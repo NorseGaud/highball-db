@@ -1,0 +1,19 @@
+{
+  "id": "mirrors-edge-catalyst",
+  "title": "Mirror's Edge Catalyst",
+  "steam_appid": 1233570,
+  "status": "community",
+  "renderer": null,
+  "anticheat": null,
+  "provenance": "Reported by udance4ever (highball-db#318, 2026-10-04), Apple M1, macOS 27.0.1, Highball 0.10.4, engine x64-sikarugir10.0_6-r19, rated 1 of 5: the Steam copy runs the EA app installer first, and that installer fails. The installer failure reproduced here on an M4 (macOS 27.0, engine x64-sikarugir10.0_6-r21) on 2026-10-05.",
+  "notes": "The Steam copy depends on EA's launcher: Steam runs the EA app installer before the game, and under the engine that installer fails at its last step. Reproduced here: the installer's package puts its files in place, then asks Windows to start its EABackgroundService, Wine's service manager cannot (error 2, file not found), the package reports 1627 and rolls everything back, and the installer shows Something went wrong. Here the code was INST-14-1627; the reporter saw INST-14-1603 at the same stage, after installing .NET 4 by hand because the installer's managed custom actions asked for it first. No fix yet, and every Steam game that needs the EA app is in the same position until the EA app runs under the engine. Linux players get it through Proton builds that carry extra service and launcher work, and even there the installer is expected to end in an error with its files moved into place by hand afterwards.",
+  "knownIssues": [
+    {
+      "symptom": "Does not launch: the EA app installer Steam runs first ends with Something went wrong (INST-14-1603 or INST-14-1627)",
+      "cause": "the EA app package cannot start its EABackgroundService under Wine's service manager and rolls its installation back",
+      "fix": "none yet (highball-db#318)"
+    }
+  ],
+  "launchArgs": null,
+  "lastVerified": null
+}
