@@ -4,6 +4,12 @@ import re, json, sys, glob
 
 STATUSES = {"verified-local", "reported-upstream", "community", "blocked-anticheat", "blocked-publisher"}
 RENDERERS = {"wined3d", "dxmt", "d3dmetal", "dxvk", "vkd3d", None}
+# The game's own code: "x64" (64-bit), "x86" (32-bit), "mixed" (a 32-bit launcher or client in
+# front of a 64-bit game, or the reverse). Absent or null means nobody has recorded it. It matters
+# for the arm64 engine line, where 32-bit code goes through WoW64 and FEX (highball's
+# private/notes/rosetta-transition-plan.md), and it turns "which 32-bit titles do we have" from a
+# search through prose into a query.
+ARCHES = {"x64", "x86", "mixed", None}
 errors = []
 
 for f in glob.glob("db/games/*.json"):
@@ -12,6 +18,7 @@ for f in glob.glob("db/games/*.json"):
         if key not in d: errors.append(f"{f}: missing {key}")
     if d.get("status") not in STATUSES: errors.append(f"{f}: bad status {d.get('status')}")
     if d.get("renderer") not in RENDERERS: errors.append(f"{f}: bad renderer {d.get('renderer')}")
+    if d.get("arch") not in ARCHES: errors.append(f"{f}: arch must be x64, x86, mixed or null, not {d.get('arch')!r}")
     if d.get("status") == "verified-local" and not d.get("lastVerified"):
         errors.append(f"{f}: verified-local requires lastVerified")
     # The app decodes these with fixed types; a wrong shape drops the row silently (2026-09-08:
