@@ -1,0 +1,24 @@
+{
+  "id": "bloody-spell",
+  "title": "Bloody Spell",
+  "steam_appid": 992300,
+  "status": "community",
+  "renderer": null,
+  "anticheat": null,
+  "provenance": "Reported by udance4ever (highball-db#316, 2026-10-04), Apple M1, macOS 27.0.1, Highball 0.10.4 beta, engine x64-sikarugir10.0_6-r19, tried on D3DMetal, DXMT and DXVK, rated 2 of 5: the menus work, the game hangs once a difficulty is chosen. Not verified by the maintainer.",
+  "notes": "Reported once, as not reaching the game: the title screen needs Microsoft's core fonts or its text does not render, the menus then work, and the game hangs after the difficulty selection on every graphics mode alike. The reporter's log ends in Wine's media pipeline waiting on itself (a winegstreamer media_source critical section that never comes back, right after a GStreamer caps assertion), which is a video the game plays at that point, not the renderer. The recipe disables Media Foundation's platform library for BloodySpell.exe only, so the player fails to open the video and the game goes on without it, the fix that carried The Last Caretaker past its menu video; it also installs the core fonts. Not yet confirmed on this game. The reporter also notes a DualSense controller was only read with Steam Input on.",
+  "knownIssues": [
+    {
+      "symptom": "Hangs after the difficulty selection, on D3DMetal, DXMT and DXVK alike",
+      "cause": "the video played at that point locks up Wine's media pipeline (winegstreamer media_source critical section wait, GStreamer 'gst_caps_is_fixed' assertion in the log)",
+      "fix": "the recipe's mfplat override for BloodySpell.exe, which skips the video; awaiting the reporter's confirmation (highball-db#316)"
+    },
+    {
+      "symptom": "Title screen text missing",
+      "cause": "the game's fonts fall back to ones the environment does not ship",
+      "fix": "Microsoft's core fonts, which the recipe installs"
+    }
+  ],
+  "launchArgs": null,
+  "lastVerified": null
+}
