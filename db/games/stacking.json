@@ -1,0 +1,19 @@
+{
+  "id": "stacking",
+  "title": "Stacking",
+  "steam_appid": 115110,
+  "status": "community",
+  "renderer": null,
+  "anticheat": null,
+  "provenance": "Reported by udance4ever (highball-db#321, 2026-10-05), Apple M1, macOS 27.0.1, Highball 0.10.6 beta, engine x64-sikarugir10.0_6-r21, environment in D3DMetal mode, rated 4 of 5. Not verified by the maintainer.",
+  "notes": "Reported playable on the default engine. A Direct3D 9 game, so it draws through DXVK's Direct3D 9 in every graphics mode but wined3d, whatever the environment's mode says. The reporter found the picture noticeably darker than the Xbox 360 version at the same resolution; whether the Windows release looks the same on Windows is not established. No measurement here yet.",
+  "knownIssues": [
+    {
+      "symptom": "Picture darker than the Xbox 360 version",
+      "cause": "not established; the PC port may simply be darker",
+      "fix": "the game's own brightness or gamma setting, if it has one"
+    }
+  ],
+  "launchArgs": null,
+  "lastVerified": null
+}
