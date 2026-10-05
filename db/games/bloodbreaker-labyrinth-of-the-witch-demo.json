@@ -10,8 +10,8 @@
   "knownIssues": [
     {
       "symptom": "Four boxes saying 'Win32 function failed: HRESULT 0x80070057' from GR_D3D_Device->CheckMultisampleQualityLevels before the game starts",
-      "cause": "The game is made with GameMaker, whose runner shows every failed graphics query in a box. D3DMetal answers Direct3D 11's multisample quality query with an invalid parameter error where a Windows driver answers with zero quality levels",
-      "fix": "Press OK on each box and the game starts and plays. DXMT may avoid the boxes, not tested yet (highball-db#343)"
+      "cause": "The game is made with GameMaker, whose runner shows every failed graphics query in a box. Asked for 8 or more samples, D3DMetal answers Direct3D 11's multisample quality query with E_INVALIDARG, where Windows, DXMT and DXVK answer success with zero quality levels (measured on an M4 with engine r21, 2026-10-05)",
+      "fix": "Press OK on each box and the game starts and plays. Setting the game to DXMT should skip the boxes, since DXMT answers the query the Windows way; not yet tried with this game (highball-db#343)"
     }
   ],
   "launchArgs": null,
