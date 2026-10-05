@@ -6,7 +6,7 @@
   "renderer": "d3dmetal",
   "anticheat": null,
   "provenance": "Reported by udance4ever (highball-db#316, 2026-10-04 and 2026-10-05), Apple M1, macOS 27.0.1, Highball 0.10.4 beta and 0.10.6 beta, engine x64-sikarugir10.0_6-r19 then r21, D3DMetal. First rated 2 of 5 (hangs after the difficulty selection on D3DMetal, DXMT and DXVK alike) in an older environment, then 5 of 5 after installing the game into a fresh environment, in game at about 28 fps at 1920x1080 per the Metal HUD in their screenshot. Not verified by the maintainer.",
-  "notes": "Plays in a fresh environment on D3DMetal on the default engine, about 28 fps at 1920x1080 on an M1 in the reporter's screenshot. The title screen's text needs Microsoft's core fonts, which the recipe installs. The same player first saw the game hang right after the difficulty selection on every graphics mode, with Wine's media pipeline stuck in the log, in an older environment whose Steam also stalled downloads (highball#258). A new environment cured both, so the hang belongs to that environment, not to the game. A DualSense controller was read without Steam Input on the first run and only with it on the next one.",
+  "notes": "Reaches play on D3DMetal on the default engine, about 28 fps at 1920x1080 on an M1 in the reporter's screenshot, but its videos hang it. The opening video and the one after the difficulty selection freeze the game a few seconds in, on every graphics mode and in a fresh environment as well as an older one, with Wine's media pipeline deadlocked in the log (a GStreamer 'gst_caps_is_fixed' assertion, then winegstreamer's media_source critical section waiting forever). One run got into the game, apparently without the video playing. The title screen's text needs Microsoft's core fonts, which the recipe installs. Whether turning Media Foundation off for BloodySpell.exe skips the videos and lets the game go on is being tested (highball-db#316). A DualSense controller was read without Steam Input on one run and only with it on the next.",
   "knownIssues": [
     {
       "symptom": "Title screen text missing",
@@ -14,9 +14,9 @@
       "fix": "Microsoft's core fonts, which the recipe installs"
     },
     {
-      "symptom": "Hangs right after the difficulty selection or a few seconds into a cinematic, on every graphics mode",
-      "cause": "seen in one older environment only (four logs, all from it), with Wine's media pipeline stuck in the log; the game reached play in a fresh environment, where the cinematic has not been retested yet",
-      "fix": "install the game into a fresh environment; whether turning Media Foundation off for BloodySpell.exe also cures the old one is being tested (highball-db#316)"
+      "symptom": "Freezes a few seconds into a video (the opening one, or the one after the difficulty selection), on every graphics mode",
+      "cause": "the video deadlocks Wine's media pipeline (GStreamer caps assertion, then winegstreamer's media_source critical section waiting forever), in fresh and older environments alike",
+      "fix": "none confirmed yet; turning Media Foundation off for BloodySpell.exe is being tested (highball-db#316)"
     }
   ],
   "launchArgs": null,
