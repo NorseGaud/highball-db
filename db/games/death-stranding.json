@@ -4,8 +4,8 @@
   "steam_appid": 1190460,
   "status": "community",
   "renderer": "d3dmetal",
-  "provenance": "Reported working by detnarrrrrrrrr (highball#107, 2026-09-15), Apple M5, macOS 26.6.2, Highball 0.9.19, Epic copy, D3DMetal with AVX advertised. Not verified by the maintainer.",
-  "notes": "DirectX 12, so D3DMetal. The game refuses to start without AVX (\"Death Stranding requires a CPU with AVX support\", highball#107 on an M5), which Rosetta hides unless asked, so the recipe advertises it to the game. Confirmed by the reporter on an M5 with Highball 0.9.19.",
+  "provenance": "Reported working by detnarrrrrrrrr (highball#107, 2026-09-15), Apple M5, macOS 26.6.2, Highball 0.9.19, Epic copy, D3DMetal with AVX advertised. Not verified by the maintainer. ppapantoniou (highball-db#313, 2026-10-04), Apple M5, macOS 27.2 as written, Highball 0.10.4, engine x64-sikarugir10.0_6-r19, D3DMetal with AVX advertised, Windows 11 set in the environment, with the death-stranding and controller recipes, rated 5 of 5 after 74 minutes.",
+  "notes": "DirectX 12, so D3DMetal. The game refuses to start without AVX (\"Death Stranding requires a CPU with AVX support\", highball#107 on an M5), which Rosetta hides unless asked, so the recipe advertises it to the game. Confirmed by the reporter on an M5 with Highball 0.9.19. A second perfect report, 74 minutes on D3DMetal on an M5 with the death-stranding recipe.",
   "lastVerified": null,
   "nativeMac": {
     "available": true,
