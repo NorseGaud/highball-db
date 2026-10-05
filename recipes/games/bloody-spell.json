@@ -9,15 +9,8 @@
   "renderer": null,
   "steps": [
     {
-      "type": "registry",
-      "key": "HKCU\\Software\\Wine\\AppDefaults\\BloodySpell.exe\\DllOverrides",
-      "name": "mfplat",
-      "valueType": "REG_SZ",
-      "data": ""
-    },
-    {
       "type": "note",
-      "text": "The game hangs once a difficulty is chosen, on D3DMetal, DXMT and DXVK alike, and the log ends in Wine's media pipeline waiting on itself (winegstreamer media_source critical section, right after a GStreamer caps assertion): the video the game plays at that point. With Media Foundation's platform library disabled for BloodySpell.exe only, the player fails to open the video and the game carries on without it, the same fix as The Last Caretaker's menu video. Microsoft's core fonts come along because the title screen's text does not render without them (highball-db#316). Nothing else in the environment changes."
+      "text": "Microsoft's core fonts, because the title screen's text does not render without them (highball-db#316). Nothing else in the environment changes. The game plays in a fresh environment with no other setting: an earlier hang after the difficulty screen, with Wine's media pipeline stuck in the log, came from one older environment and went away in a new one, so no video override is needed."
     }
   ],
   "knownIssues": [],
