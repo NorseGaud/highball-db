@@ -17,8 +17,8 @@
   "requiresLauncher": {
     "id": "rockstar",
     "name": "Rockstar Games Launcher",
-    "impact": "blocks",
-    "note": "Rockstar's launcher installer deadlocks waiting on its Windows service, so the install never finishes. Even with the launcher files forced into place, Launcher.exe fails to initialize because its embedded-browser UI does not render on this Wine build, so the game cannot be reached even though the game itself is reported to run. Tracked upstream at Sikarugir issue #258.",
+    "impact": "setup",
+    "note": "Required. Steam starts it and it hands off to the game after sign-in. It installs and signs in on the Wine 11 engine (x64-crossover26.3-r15 or later) through the rockstar recipe, which Play applies and which offers that engine. The Wine 10 engine cannot draw its sign-in window, which is why the recipe moves the environment. The launcher last passed on an M4 with macOS 27.0 on 2026-10-05.",
     "tracking": "https://github.com/Sikarugir-App/Sikarugir/issues/258"
   },
   "verified": {
