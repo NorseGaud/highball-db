@@ -12,7 +12,7 @@
     "note": "anti-cheat present; it runs on Linux through Proton, which does not settle macOS"
   },
   "provenance": "Reported by Yeetmaster on Highball's Discord (2026-09-30): on the Wine 11 engine (x64-crossover26.3) with DXMT the Steam connector opens and a server can be chosen, on the default engine it runs with no window. Measured on an M4 with macOS 27.0 on 2026-10-01 up to the connector's Nexon sign-in screen, on engines r15 and r12. The game itself was not played by the maintainer.",
-  "notes": "Vindictus starts through Nexon's Steam connector (nxsteam.exe), a small Electron app that asks for a Nexon account and a server before the game opens. Highball adds Chromium's --in-process-gpu switch when you press Play, which makes the connector's window appear on the default engine. Measured here up to the Nexon sign-in screen only, the game past it is the reporter's.",
+  "notes": "Vindictus starts through Nexon's Steam connector (nxsteam.exe), a small Electron app that asks for a Nexon account and a server before the game opens. Highball adds Chromium's --in-process-gpu switch when you press Play, which makes the connector's window appear on the default engine. Measured here up to the Nexon sign-in screen only, the game past it is the reporter's. Checked here on 2026-10-05 on an M4 with engine r21: Steam Connector opens on Nexon's account prompt at 100 s, which is as far as a run without a login goes.",
   "knownIssues": [
     {
       "symptom": "Nothing appears after pressing Play on the default engine. Nexon's Steam connector runs in the background with no window",
