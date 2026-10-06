@@ -2,7 +2,9 @@
   "id": "portal-2",
   "kind": "game",
   "title": "Portal 2",
-  "requires": ["steam"],
+  "requires": [
+    "steam"
+  ],
   "renderer": "dxvk",
   "steps": [
     {
@@ -16,15 +18,31 @@
       "contents": "mat_hdr_level 0\n"
     },
     {
+      "type": "registry",
+      "key": "HKCU\\Software\\Wine\\AppDefaults\\portal2.exe\\Direct3D",
+      "name": "VideoMemorySize",
+      "valueType": "REG_SZ",
+      "data": "2047"
+    },
+    {
       "type": "note",
       "text": "Portal 2 needs HDR off on this engine: Source's HDR path triggers a MoltenVK bug (a giant zero-attachment render pass aborts the GPU) that froze or crashed every map load. With mat_hdr_level 0 — which this recipe writes into the game's config — it runs at 200+ fps under DXVK. Keep the bottle on DXVK. The visual cost is Source's HDR bloom, minor in Portal 2. If you later change video settings in-game and loads start freezing again, set Shader Detail/HDR to none or re-apply this recipe."
+    },
+    {
+      "type": "note",
+      "text": "Portal 2 sizes video memory from Windows' WMI, where Wine reports 4294967295 bytes on a Mac with a lot of memory. The game reads that as -1 and picks its lowest Model / Texture Detail on its first start. The recipe tells Wine to report 2047 MB to portal2.exe, so the game picks High. A config saved before this keeps its old setting: set Model / Texture Detail to High in Options, Video, Advanced once."
     }
   ],
   "knownIssues": [
     {
       "symptom": "Freeze or crash at the end of every map load (white or stuck screen), menus fine",
       "cause": "Source's HDR rendering path emits a 16384x16384 zero-attachment render pass that hard-aborts the Apple GPU inside MoltenVK 1.4.x (VK_ERROR_DEVICE_LOST). Engine-level; affects other Source titles too.",
-      "fix": "mat_hdr_level 0 (this recipe writes it into portal2/cfg). Verified on macOS 14.6 and again on 26.6.2: with it, no freeze across the observed runs; without it, every load died (crash on 14.6, frozen or white screen on 26.6.2)."
+      "fix": "mat_hdr_level 0 (this recipe writes it into portal2/cfg). Verified on macOS 14.6 and again on 26.6.2: with it, no freeze across the observed runs; without it, every load died (crash on 14.6, frozen or white screen on 26.6.2). Re-checked on 2026-10-06 on an M4, macOS 27.0, engine x64-sikarugir10.0_6-r21: with mat_hdr_level 2 the map loads and the screen stays white, so HDR stays off."
+    },
+    {
+      "symptom": "Textures look softer than on Windows. Options, Video, Advanced shows Model / Texture Detail on Low after the first start",
+      "cause": "Portal 2's shaderapidx9 sizes video memory through WMI (Win32_VideoController). Wine answers AdapterRAM 4294967295 (0xFFFFFFFF) under DXVK, the game reads it as -1 (mat_info: m_TextureMemorySize -1, Size of Texture Memory 0 kb) and its autodetect saves gpu_mem_level 0. Seen on an M1 Pro (16 GB) and an M4 (32 GB), 2026-10-06.",
+      "fix": "this recipe sets HKCU\\Software\\Wine\\AppDefaults\\portal2.exe\\Direct3D VideoMemorySize = 2047, then the game reports 2047 MB and saves gpu_mem_level 2 (High). Verified on the M4, macOS 27.0, r21. A config saved before needs Model / Texture Detail set to High once by hand."
     }
   ],
   "lastVerified": {
