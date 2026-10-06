@@ -1,0 +1,39 @@
+{
+  "id": "binary-domain",
+  "title": "Binary Domain",
+  "steam_appid": 203750,
+  "status": "community",
+  "renderer": "d3dmetal",
+  "anticheat": null,
+  "provenance": "Reported by udance4ever (highball-db#345, 2026-10-05), Apple M1, macOS 27.0.1, Highball 0.10.8, engine x64-sikarugir10.0_6-r21, the environment in D3DMetal mode (Direct3D 9 runs through DXVK there), with .NET 3.5 SP1, .NET 4.8, SDL controllers, core fonts and the Visual C++ runtimes installed. Reaches the game and plays, but the sound is broken. Not verified by the maintainer.",
+  "notes": "Gets in game with high frame rates once its configuration tool and the game run the same way, and the sound is broken. The game stores the graphics card's ID from BinaryDomainConfiguration.exe and refuses to start when the game sees another one. On the default engine in D3DMetal or DXVK mode a Direct3D 9 game sees the Mac's chip with an ID that stays the same from run to run, while Wine's own Direct3D and the Wine 11 engine show a different card (measured on an M4, 2026-10-05). The player added the configuration tool to the environment's programs so both run in the same mode. The CRI audio middleware loads XAudio 2.7, which the Linux fix replaces with Microsoft's own; the 'Microsoft XAudio 2.7 and XACT' dependency does that here, not yet tried with this game.",
+  "knownIssues": [
+    {
+      "symptom": "'Critical Error! Graphics device is invalid, please run the configuration tool' and the game quits",
+      "cause": "The configuration tool saved a graphics card ID that differs from the one the game sees, after a change of graphics mode or engine",
+      "fix": "Run BinaryDomainConfiguration.exe from the game folder in the same environment and mode as the game (adding it to the environment's programs keeps it there), save, then start the game"
+    },
+    {
+      "symptom": "Sound breaks up or is missing in game",
+      "cause": "The game's CRI audio middleware does not get on with Wine's XAudio 2.7 (the same on Linux)",
+      "fix": "Install the 'Microsoft XAudio 2.7 and XACT' dependency in the environment (Highball 0.10.9 and later); not yet confirmed with this game (highball-db#345)"
+    },
+    {
+      "symptom": "The picture spans the external monitor and the laptop screen",
+      "cause": "The game's default display setting",
+      "fix": "Set 1920x1080 and Windowed in the game's options"
+    },
+    {
+      "symptom": "A controller works in menus but not in play",
+      "cause": "Steam Input sits between the controller and the game's XInput path (the same on Linux)",
+      "fix": "Turn Steam Input off for the game in its Steam properties"
+    },
+    {
+      "symptom": "A .NET 3.5 prompt when the configuration tool starts",
+      "cause": "The configuration tool is a .NET 3.5 program",
+      "fix": "The player installed .NET 3.5 SP1 with winetricks; Highball has no dependency entry for it yet"
+    }
+  ],
+  "launchArgs": null,
+  "lastVerified": null
+}
