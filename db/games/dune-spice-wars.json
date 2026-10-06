@@ -11,11 +11,6 @@
     {
       "symptom": "'OpenGL Error: unable to create an OpenGL context, OpenGL 3.2+ is required' at launch (reported on an M3, highball#206).",
       "cause": "the game's OpenGL path asks for a context macOS does not offer; not looked at beyond the dialog yet.",
-      "fix": "none confirmed. If Steam offers a DirectX launch choice for it, that is the thing to try."
-    },
-    {
-      "symptom": "An OpenGL error at start and the game quits",
-      "cause": "It starts on OpenGL by default, which fails under Wine on a Mac",
       "fix": "Start it on DirectX: Play passes hlbootdx.dat as a launch option, the fix CrossOver players use (AppleGamingWiki, CodeWeavers' tip). Setting Driver = DirectX in options.ini in the game folder does the same. Not run here (highball#206)"
     }
   ],
