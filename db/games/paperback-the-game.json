@@ -1,0 +1,19 @@
+{
+  "id": "paperback-the-game",
+  "title": "Paperback: The Game",
+  "steam_appid": 710700,
+  "status": "community",
+  "renderer": "dxmt",
+  "anticheat": null,
+  "provenance": "Reported not launching by udance4ever (highball-db#349, 2026-10-06), Apple M1, macOS 27.0.1, Highball 0.10.9, engine x64-sikarugir10.0_6-r21, every graphics mode. Reproduced here on an M4 (macOS 27.0, r21, 2026-10-06), both the 32-bit Paperback.exe that Steam starts and the 64-bit Paperback64.exe beside it.",
+  "notes": "Does not start. The game is built on the Loom engine (SDL and OpenGL, 2017), so the graphics mode setting does not apply to it. It creates an old-style OpenGL context, which macOS gives as OpenGL 2.1, then loads glClearDepthf. Wine refuses that function there, since macOS's 2.1 context does not list GL_ARB_ES2_compatibility, and the game calls the empty pointer: a page fault at address 0 a second after start and Wine's crash dialog. Windows drivers list that extension in every context, which is why it runs there. No setting gets past it; it needs an engine change (glClearDepthf and glDepthRangef answered through glClearDepth and glDepthRange in old-style contexts).",
+  "knownIssues": [
+    {
+      "symptom": "Wine's Program Error dialog (winedbg) right at launch, page fault on read access at address 0, on every graphics mode",
+      "cause": "the game calls glClearDepthf, which Wine's opengl32 withholds in macOS's OpenGL 2.1 context (needs GL_ARB_ES2_compatibility or OpenGL 4.1); measured with WINEDEBUG=warn+opengl,+wgl on an M4",
+      "fix": "none yet; needs an engine change"
+    }
+  ],
+  "launchArgs": null,
+  "lastVerified": null
+}
