@@ -15,13 +15,8 @@
     },
     {
       "symptom": "'Dark Omen has failed due to an incompatible DirectX version or out-of-date display drivers' at start",
-      "cause": "the game wants 640x480 at 16 bits and Wine on the Mac lists only the display's own mode; Wine's emulated modes help only when set for the whole environment, because the list is built in another process",
-      "fix": "none confirmed: with emulated display modes for the whole environment the error is gone but the picture stayed black in a scripted run (M4, 2026-10-05)"
-    },
-    {
-      "symptom": "Black screen at start, the game asks for 640x480 at 16 bits",
-      "cause": "Two faults in a row. The Mac does not list that mode and Wine refused it; from the next Highball version, Emulate display mode changes on the game's page makes the change go through (measured on an M4, engine r21, 2026-10-06), and the window then opens scaled to the screen. It stays black after that: Wine's DirectDraw logs 'Can't find a flip target' on every frame",
-      "fix": "None yet for the black picture; the mode part is fixed for the next version (highball#120)"
+      "cause": "The game wants 640x480 at 16 bits and Wine on the Mac lists only the display's own modes. Wine adds its emulated modes to the list only when the process that builds it, explorer.exe, emulates mode changes too",
+      "fix": "From the next Highball version, turning on Emulate display mode changes on the game's page also sets it for explorer.exe, and the change goes through (measured on an M4, engine r21, 2026-10-06). The picture then stays black, which is the other issue here (highball#120)"
     }
   ],
   "launchArgs": null,
