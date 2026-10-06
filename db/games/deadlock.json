@@ -4,8 +4,8 @@
   "steam_appid": 1422450,
   "status": "reported-upstream",
   "renderer": "dxmt",
-  "provenance": "DXMT changelog v0.73 (github.com/3Shain/dxmt/releases) playX18 (highball-db#243, 2026-09-28): rated 4, playable with minor issues, Apple M5 Pro, macOS 27.0, DXMT, a full standard match played; engine and Highball version not stated.",
-  "notes": "MetalFX temporal scaler output fixed A report has a full standard match playable on DXMT on an M5 Pro, with two costs: about ten minutes of shader compilation before the game stops stuttering, and audio crackle, which that player fixed by setting the Mac's output to 88.2 kHz in Audio MIDI Setup.",
+  "provenance": "DXMT changelog v0.73 (github.com/3Shain/dxmt/releases). playX18 (highball-db#243, 2026-09-28): rated 4, playable with minor issues, Apple M5 Pro, macOS 27.0, DXMT, a full standard match played; engine and Highball version not stated.",
+  "notes": "DXMT's changelog lists the MetalFX temporal scaler output as fixed. A report has a full standard match playable on DXMT on an M5 Pro, with two costs: about ten minutes of shader compilation before the game stops stuttering, and audio crackle, which that player fixed by setting the Mac's output to 88.2 kHz in Audio MIDI Setup.",
   "lastVerified": null,
   "anticheat": {
     "names": [
@@ -17,8 +17,8 @@
   "knownIssues": [
     {
       "symptom": "Audio crackles (reported in the main hub on an M5 MacBook Air, highball#187, and in matches on an M5 Pro, highball-db#243).",
-      "cause": "not established. 48 kHz output changed nothing for the first reporter, and the crackle does not follow the frame time, so it sits in the audio path rather than a stall.",
-      "fix": "reported working by one player, not verified here: set the Mac's output to 88.2 kHz in Audio MIDI Setup (Applications, Utilities), then restart the game."
+      "cause": "Most likely the same as Counter-Strike 2's, another Source 2 game: it keeps very little sound queued and at 48 kHz the Mac asked Wine for more at a time than it had (measured on Counter-Strike 2, highball#127). Not measured on Deadlock itself",
+      "fix": "Highball 0.10.3 and later carry the fix that cured Counter-Strike 2's crackle (default engine r19 and later, Wine 11 engine r14 and later), not yet confirmed on Deadlock (highball#187). On older engines, setting the Mac's output to 88.2 kHz in Audio MIDI Setup worked for one player"
     },
     {
       "symptom": "Stutter for the first minutes of a match (reported on an M5 Pro, DXMT).",

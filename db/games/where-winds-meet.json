@@ -11,7 +11,7 @@
     {
       "symptom": "Crashes at random, from 15 seconds to an hour and a half into a session, once with the in-game Store window open (reported on an M5 Pro, Wine 11 engine r12, DXMT, highball#240)",
       "cause": "DXMT built its clear pipelines before the Metal device field they read was set up, so the request went to whatever that memory held. The 'unrecognized selector sent to instance' line in the log is the signature. Fixed in DXMT on 30 September",
-      "fix": "The Wine 11 engine r16 (Highball 0.10.4 beta) carries the fixed DXMT, pick it on the game's Full page under Advanced, Engine. The default engine has it since 0.10.1. D3DMetal avoids it, a 102-minute session there had stutter only"
+      "fix": "The Wine 11 engine carries the fixed DXMT from r16. Environments on it never change revision on their own, so pick the newest, x64-crossover26.3-r19 with Highball 0.10.10, on the environment's Full page under Advanced, Engine. The default engine has it since 0.10.1. D3DMetal avoids it, a 102-minute session there had stutter only"
     },
     {
       "symptom": "Stutter in areas with many NPCs on DXMT, and a bit of stutter on D3DMetal too (reported on an M5 Pro)",
