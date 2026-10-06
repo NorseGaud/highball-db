@@ -26,7 +26,7 @@
     },
     {
       "symptom": "On the Wine 11 engine r11 with the DXVK mode, no window appears (measured on the demo build on a Wine 11 test engine built from r11's components, 2026-09-24).",
-      "cause": "every host-visible memory mapping fails with VK_ERROR_OUT_OF_HOST_MEMORY on that tree's MoltenVK 1.4.2 while 19 MB is in use. Lead, not verified: the shadow-import patch in that MoltenVK build. Tracked as highball#198.",
+      "cause": "Every host-visible memory mapping failed with VK_ERROR_OUT_OF_HOST_MEMORY while 19 MB was in use. The cause found later (highball#198) was the Sims recipe's MVK_SHADOW_IMPORT=1 reaching every game in the environment, which Highball 0.9.38 scoped to the Sims. Not re-measured on the Wine 11 engine since",
       "fix": "use Wine's own Direct3D for this game, which is also the faster mode on every engine measured."
     }
   ],
